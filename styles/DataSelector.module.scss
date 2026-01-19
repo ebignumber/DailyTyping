@@ -7,6 +7,23 @@
   margin-bottom: 40px;
 }
 
+.customButton {
+  font-size: 14px;
+  padding: 0.5em 1em;
+  color: var(--island-fg);
+  border: 1px solid;
+  cursor: pointer;
+  border-radius: 0.4em;
+  text-align: center;
+}
+
+.textArea {
+  background-color: transparent;
+  color: var(--island-fg);
+  resize: none;
+  width: 100%;
+}
+
 .groupTitle {
   margin-bottom: 20px;
   font-size: 18px;

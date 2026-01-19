@@ -59,17 +59,18 @@ export function DataSelector({ dispatch, handleClose }: Props) {
           </div>
         </div>
       ))}
-      <textarea onChange={e => setCustomInput(e.target.value)}></textarea>
-      <button 
-          onClick={() => {
-            if (customInput){
-              handleClose()
-              dispatch({ type: 'setData', dataName: 'Custom', data: customInput.split(" ")})
-            }
-          }}
-      >
-        Test
-      </button>
+        <textarea onChange={e => setCustomInput(e.target.value)} className={styles.textArea} placeholder='Copy and paste text here to make your own custom pactice!'></textarea>
+        <div
+            className={styles.customButton}
+            onClick={() => {
+              if (customInput){
+                handleClose()
+                dispatch({ type: 'setData', dataName: 'Custom', data: customInput.split(/\s+/gi)})
+              }
+            }}
+        >
+          Custom
+      </div>
     </div>
   )
 }
