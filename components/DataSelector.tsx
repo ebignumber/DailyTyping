@@ -1,4 +1,4 @@
-import { Dispatch } from 'react'
+import { Dispatch, useState } from 'react'
 import { Action } from '../lib/types'
 import styles from '../styles/DataSelector.module.scss'
 
@@ -36,6 +36,8 @@ export const dataNameGroups = [
 type Props = { dispatch: Dispatch<Action>; handleClose: () => void }
 
 export function DataSelector({ dispatch, handleClose }: Props) {
+  const [customInput, setCustomInput] = useState("")
+
   return (
     <div className={styles.dataSelector}>
       {dataNameGroups.map(dataNameGroup => (
@@ -57,6 +59,17 @@ export function DataSelector({ dispatch, handleClose }: Props) {
           </div>
         </div>
       ))}
+      <textarea onChange={e => setCustomInput(e.target.value)}></textarea>
+      <button 
+          onClick={() => {
+            if (customInput){
+              handleClose()
+              dispatch({ type: 'setData', dataName: 'Custom', data: customInput.split(" ")})
+            }
+          }}
+      >
+        Test
+      </button>
     </div>
   )
 }
